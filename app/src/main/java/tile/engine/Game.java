@@ -16,6 +16,7 @@ public class Game extends Application{
 
         TileMap map = new TileMap();
         Camera cam = new Camera();
+        Player player = new Player(160, 120);
         Scene scene = new Scene(new StackPane(canvas));
         Input.attach(scene);
 
@@ -24,24 +25,26 @@ public class Game extends Application{
             @Override
             public void handle(long now) {
 
-                int dx = 0, dy = 0;
+                // int dx = 0, dy = 0;
 
-                if(Input.isDown("A") || Input.isDown("LEFT")) dx--;
-                if(Input.isDown("D") || Input.isDown("RIGHT")) dx++;
-                if(Input.isDown("W") || Input.isDown("UP")) dy--;
-                if(Input.isDown("S") || Input.isDown("DOWN")) dy++;
+                // if(Input.isDown("A") || Input.isDown("LEFT")) dx--;
+                // if(Input.isDown("D") || Input.isDown("RIGHT")) dx++;
+                // if(Input.isDown("W") || Input.isDown("UP")) dy--;
+                // if(Input.isDown("S") || Input.isDown("DOWN")) dy++;
 
-                cam.moved(dx, dy, map);
-
+                // cam.moved(dx, dy, map);
+                player.update();
+                cam.follow(player, map);
                 canvas.getGraphicsContext2D().clearRect(0, 0, 320, 240);
 
                 Renderer.render(canvas.getGraphicsContext2D(), map, cam);
+                player.render(canvas.getGraphicsContext2D(), cam);
             }
             
         };
         loop.start();
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Tile Engeni - Face 2 (Camara)");
+        primaryStage.setTitle("Tile Engeni - Face 3 (Jugador)");
         primaryStage.show();
     }
 
