@@ -22,18 +22,14 @@ public class Game extends Application{
 
         AnimationTimer loop = new AnimationTimer() {
 
+            long lastTime;
             @Override
             public void handle(long now) {
 
-                // int dx = 0, dy = 0;
-
-                // if(Input.isDown("A") || Input.isDown("LEFT")) dx--;
-                // if(Input.isDown("D") || Input.isDown("RIGHT")) dx++;
-                // if(Input.isDown("W") || Input.isDown("UP")) dy--;
-                // if(Input.isDown("S") || Input.isDown("DOWN")) dy++;
-
-                // cam.moved(dx, dy, map);
-                player.update(map);
+                if(lastTime == 0) {lastTime = now; return;}
+                double dt = (now - lastTime) / 1_000_000_000.0;
+                lastTime = now;
+                player.update(dt, map);
                 cam.follow(player, map);
                 canvas.getGraphicsContext2D().clearRect(0, 0, 320, 240);
 

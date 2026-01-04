@@ -4,10 +4,10 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class Renderer {
     public static void render(
-        GraphicsContext gc,
-        TileMap map,
-        Camera cam
-    ){
+            GraphicsContext gc,
+            TileMap map,
+            Camera cam){
+
         int startX = cam.x / TileMap.TILE_SIZE;
         int startY = cam.y / TileMap.TILE_SIZE;
 
@@ -16,7 +16,7 @@ public class Renderer {
 
         for (int ty = startY; ty < endY; ty++) {
             for (int tx = startX; tx < endX; tx++) {
-                if (map.getTile(tx, ty) == -1) continue;
+                if (map.getTile(tx, ty) == null) continue;
 
                 int[][] tile = TileGenerator.generateGrassTile(tx, ty);
                 int px = tx * TileMap.TILE_SIZE - cam.x;
