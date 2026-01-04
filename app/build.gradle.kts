@@ -46,7 +46,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "tile.engine.App"
+    mainClass = "tile.engine.Game"
     applicationDefaultJvmArgs = listOf(
     "--enable-native-access=javafx.graphics,javafx.media,javafx.web",
     "--add-exports=javafx.graphics/com.sun.glass.utils=ALL-UNNAMED"
