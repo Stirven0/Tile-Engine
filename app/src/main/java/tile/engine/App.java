@@ -5,6 +5,8 @@ package tile.engine;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -18,13 +20,15 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Text message = new Text("Full message");
-        StackPane root = new StackPane(message);
+        Canvas canvas = new Canvas(256, 256);
+        GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        Scene scene = new Scene(root, 400, 300);
+        int[][] tile = TileGenerator.generateGrassTile(4, 7);
 
-        primaryStage.setTitle("Tile Engine");
-        primaryStage.setScene(scene);
+        TileRenderer.renderTile(gc, tile, 12, 32, 32);
+
+        primaryStage.setScene(new Scene(new StackPane(canvas)));
+        primaryStage.setTitle("16x16 Generative Tile Demo");
         primaryStage.show();
     }
 }
