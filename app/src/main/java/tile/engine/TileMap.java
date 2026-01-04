@@ -10,7 +10,11 @@ public class TileMap {
     public TileMap(){
         for (int y = 0; y < MAP_HEIGHT; y++) {
             for (int x = 0; x < MAP_WIDTH; x++) {
-                map[y][x] = 1; // solo pasto
+                if(x == 0 || y == 0 || x == MAP_WIDTH-1 || y == MAP_HEIGHT-1){
+                    map[y][x] = 2; // muro
+                }else{
+                    map[y][x] = 1; // solo pasto
+                }
             }
         }
     }
@@ -20,5 +24,9 @@ public class TileMap {
             return -1;
         }
         return map[y][x];
+    }
+
+    public boolean isSolid(int idTile) {
+        return idTile == 2;
     }
 }

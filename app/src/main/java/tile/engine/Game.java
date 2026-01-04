@@ -33,7 +33,7 @@ public class Game extends Application{
                 // if(Input.isDown("S") || Input.isDown("DOWN")) dy++;
 
                 // cam.moved(dx, dy, map);
-                player.update();
+                player.update(map);
                 cam.follow(player, map);
                 canvas.getGraphicsContext2D().clearRect(0, 0, 320, 240);
 
