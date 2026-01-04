@@ -15,7 +15,7 @@ public class Renderer {
         int endY = (cam.y + cam.height) / TileMap.TILE_SIZE + 1;
 
         for (int ty = startY; ty < endY; ty++) {
-            for (int tx = startX; tx < endY; tx++) {
+            for (int tx = startX; tx < endX; tx++) {
                 if (map.getTile(tx, ty) == -1) continue;
 
                 int[][] tile = TileGenerator.generateGrassTile(tx, ty);
